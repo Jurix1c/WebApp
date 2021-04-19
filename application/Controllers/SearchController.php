@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Controllers;
+use App\Controllers\BaseController;
 
 class SearchController extends BaseController
 {
-    function __constructor()
+    function __construct()
     {
 
     }

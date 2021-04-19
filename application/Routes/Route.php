@@ -3,17 +3,17 @@
 namespace App\Routes;
 
 use App\Controllers\AdvertsController;
+use App\Controllers\SearchController;
 
 class Route implements RouterInterface
 {
     private $classAdvert;
     private $classSearch;
     
-    function __constructor()
+    function __construct()
     {
         $this->classAdvert = new AdvertsController();
         $this->classSearch = new SearchController();
-        //var_dump(new AdvertsController());
     }
     
     static function clearUrl($url): string 
@@ -35,28 +35,28 @@ class Route implements RouterInterface
 
     public function methodGET($url): void
     {
-        $request = array();
-        $request = self::clearUrl($url);
-        //echo '<br/>';
-        //echo $request;
-        echo $_GET["id"];
-        echo '<br/>';
-        echo $request;
-        echo '<br/>';
+        $request = $this->clearUrl($url);
 
         switch ($request):
             case "eventSave":
-                //$this->classAdvert->eventSave($_GET);
-                //$this->classAdvert->eventShow();
-                //var_dump($this->classAdvert);
-                //echo "Метод eventSave";
+                $this->classAdvert->eventSave($_GET);
+                break;
+            case "eventShow":
+                $this->classAdvert->eventShow($_GET);
+                break;
+            case "eventList":
+                $this->classAdvert->eventList($_GET);
+                break;
+            case "eventSearch":
+                $this->classSearch->eventSearch($_GET);
+                break;
+            case "eventIndex":
+                $this->classSearch->eventIndex($_GET);
+                 break;
             default:
                 echo "Метод не найден";
+                break;
         endswitch; 
-        //echo "methodGET"; 
-        //echo '<br/>';
-        //echo $url;
-
     }
 
 
