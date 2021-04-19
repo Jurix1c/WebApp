@@ -29,7 +29,7 @@ class Route implements RouterInterface
         
         echo "methodPOST";
         echo '<br/>';
-        echo $url;
+        //echo $url;
 
     }
 
